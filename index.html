@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Samsidh School – Mindful Practices</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#a1c4fd,#c2e9fb);
+    color:#333;
+}
+header{
+    background:linear-gradient(90deg,#667eea,#764ba2);
+    color:white;
+    padding:30px;
+    text-align:center;
+}
+header h1{
+    margin:0;
+    font-size:36px;
+}
+header p{
+    font-size:18px;
+    opacity:0.9;
+}
+.container{
+    padding:40px;
+    max-width:1200px;
+    margin:auto;
+}
+.section-title{
+    text-align:center;
+    font-size:28px;
+    margin-bottom:30px;
+    color:#444;
+}
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+.card{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 15px 25px rgba(0,0,0,0.1);
+    transition:transform 0.3s;
+}
+.card:hover{
+    transform:translateY(-10px);
+}
+.card h3{
+    margin-top:0;
+    color:#5a67d8;
+}
+.card p{
+    font-size:15px;
+}
+.chatbot{
+    margin-top:60px;
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 15px 25px rgba(0,0,0,0.15);
+}
+.chat-header{
+    font-size:22px;
+    color:#764ba2;
+    margin-bottom:15px;
+}
+.chat-box{
+    height:200px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:10px;
+    overflow-y:auto;
+    margin-bottom:10px;
+}
+.user{
+    text-align:right;
+    color:#2b6cb0;
+    margin:5px 0;
+}
+.bot{
+    text-align:left;
+    color:#805ad5;
+    margin:5px 0;
+}
+.chat-input{
+    display:flex;
+    gap:10px;
+}
+.chat-input input{
+    flex:1;
+    padding:10px;
+    border-radius:10px;
+    border:1px solid #ccc;
+}
+.chat-input button{
+    background:#667eea;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:10px;
+    cursor:pointer;
+}
+footer{
+    text-align:center;
+    padding:20px;
+    color:#444;
+    font-size:14px;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>SAMSidh School</h1>
+    <p>Pre-Period Mindful Practices for Student Well-being</p>
+</header>
+
+<div class="container">
+
+    <h2 class="section-title">🌿 Mindful Practices 🌿</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>💖 Loving-Kindness Meditation</h3>
+            <p>Increases compassion, empathy, and emotional well-being while creating harmonious relationships.</p>
+        </div>
+
+        <div class="card">
+            <h3>🌬️ Alternate Nostril Breathing</h3>
+            <p>Balances brain hemispheres, reduces stress and anxiety, and improves focus and calmness.</p>
+        </div>
+
+        <div class="card">
+            <h3>🧠 Super Brain Yoga</h3>
+            <p>Boosts memory, concentration, and cognitive function by improving blood flow to the brain.</p>
+        </div>
+
+        <div class="card">
+            <h3>🐝 Bumblebee Breathing</h3>
+            <p>Calms the mind, reduces stress, lowers blood pressure, and can be practiced anywhere.</p>
+        </div>
+
+        <div class="card">
+            <h3>⏱️ 2x Breathing</h3>
+            <p>A simple breathing technique to self-regulate during overwhelm and emotional stress.</p>
+        </div>
+
+        <div class="card">
+            <h3>👏 Hand Clapping</h3>
+            <p>Stimulates brain hemispheres, improves circulation, and releases mental tension.</p>
+        </div>
+
+        <div class="card">
+            <h3>✍️ Writing Three Good Things</h3>
+            <p>Encourages gratitude, positivity, and emotional resilience through daily reflection.</p>
+        </div>
+
+    </div>
+
+    <div class="chatbot">
+        <div class="chat-header">🤖 Mindfulness Chatbot</div>
+        <div class="chat-box" id="chatBox"></div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Example: I am getting headache...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    © 2025 Samsidh School | Mindful Living & Well-being
+</footer>
+
+<script>
+function sendMessage(){
+    const input=document.getElementById("userInput");
+    const chat=document.getElementById("chatBox");
+    const userText=input.value.toLowerCase();
+    if(userText==="") return;
+
+    chat.innerHTML+=`<div class="user">You: ${input.value}</div>`;
+
+    let reply="Try Loving-Kindness Meditation for overall calm.";
+
+    if(userText.includes("headache")){
+        reply="🐝 Try Bumblebee Breathing – it helps reduce headaches and relaxes the mind.";
+    }
+    else if(userText.includes("stress")||userText.includes("anxiety")){
+        reply="🌬️ Alternate Nostril Breathing is best to reduce stress and anxiety.";
+    }
+    else if(userText.includes("focus")||userText.includes("study")){
+        reply="🧠 Super Brain Yoga will improve focus and concentration.";
+    }
+    else if(userText.includes("overwhelm")){
+        reply="⏱️ Try 2x Breathing to self-regulate emotions.";
+    }
+
+    chat.innerHTML+=`<div class="bot">Bot: ${reply}</div>`;
+    chat.scrollTop=chat.scrollHeight;
+    input.value="";
+}
+</script>
+
+</body>
+</html>
